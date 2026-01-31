@@ -2,7 +2,7 @@ Here is a comprehensive **README.md** file tailored for your project submission 
 
 ---
 
-# Tools Issue Management System (Tools OS v2.0)
+# Tools Issue Management System
 
 A futuristic, high-fidelity web application built to streamline the registration of mechanics and the management of industrial tool inventories. This system features a dual-role architecture for administrators and technical personnel.
 
