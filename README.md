@@ -1,6 +1,3 @@
-Here is a comprehensive **README.md** file tailored for your project submission to Varsha Tiwari. It highlights the futuristic UI, the full-stack implementation, and how you met every specific requirement.
-
----
 
 # Tools Issue Management System
 
@@ -91,4 +88,3 @@ The system will be live at `http://localhost:5000`.
 
 **Developed by Mangal**
 
-Would you like me to help you generate a list of sample "Tools Category" data to populate your inventory for the demo?
