@@ -112,5 +112,23 @@ This repository includes a `netlify.toml` that publishes the static frontend fro
 [![Netlify Status](https://api.netlify.com/api/v1/badges/<YOUR_BADGE_ID>/deploy-status)](https://app.netlify.com/sites/<YOUR_SITE>/deploys)
 
 ---
+
+## 🧪 Deploy verification (quick checks)
+After deploying, run these commands to verify the frontend and backend are healthy:
+
+```bash
+# 1) Check the static site
+curl -I https://<YOUR_SITE>.netlify.app
+
+# 2) Health endpoint (Netlify Function)
+curl https://<YOUR_SITE>.netlify.app/api/health
+
+# 3) Check tools API
+curl https://<YOUR_SITE>.netlify.app/api/admin/tools
+```
+
+If any command returns a 5xx or a connection error, check **Site → Functions → server → Logs** in the Netlify UI for error details.
+
+---
 **Developed by Mangal**
 

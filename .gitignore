@@ -1,0 +1,9 @@
+# Ignore environment files
+tool-system/.env
+
+# Node modules
+node_modules/
+**/node_modules/
+
+# Netlify functions cache
+.netlify/

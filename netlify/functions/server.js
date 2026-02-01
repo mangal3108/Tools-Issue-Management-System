@@ -93,6 +93,16 @@ app.post('/api/tools/return', async (req, res) => {
   } catch (err) { res.status(500).json({ msg: 'Return Error' }); }
 });
 
+// --- Health Check ---
+app.get('/api/health', async (req, res) => {
+  try {
+    const dbState = mongoose.connection.readyState; // 0 = disconnected, 1 = connected
+    res.json({ status: 'ok', dbConnected: dbState === 1 });
+  } catch (err) {
+    res.status(500).json({ status: 'error', error: err.message });
+  }
+});
+
 // Mongoose connection reuse (avoid reconnect on warm invocations)
 const handler = serverless(app);
 
