@@ -3,6 +3,13 @@
 
 A futuristic, high-fidelity web application built to streamline the registration of mechanics and the management of industrial tool inventories. This system features a dual-role architecture for administrators and technical personnel.
 
+You can Directly Access it here : https://timsbymangal.netlify.app/
+## 🛡️ Default Credentials (Post-Seeding)
+
+* **Role**: Admin
+* **Email**: `admin@system.com`
+* **Password**: `Admin@123`
+
 ## 🚀 Key Features
 
 ### Admin Console (Root_Admin)
@@ -89,11 +96,7 @@ node server.js
 
 The system will be live at `http://localhost:5000`.
 
-## 🛡️ Default Credentials (Post-Seeding)
 
-* **Role**: Admin
-* **Email**: `admin@system.com`
-* **Password**: `Admin@123`
 
 ---
 ## 📦 Deployment (Netlify) ✅
