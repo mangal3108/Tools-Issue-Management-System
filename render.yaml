@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: tims-backend
+    env: node
+    region: "oregon"
+    branch: "main"
+    root: "tool-system"
+    buildCommand: "npm install"
+    startCommand: "npm start"
+    autoDeploy: true
+    plan: "free"

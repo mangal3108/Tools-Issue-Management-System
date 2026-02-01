@@ -67,6 +67,8 @@ Because the system starts with an empty database, run the seed script to create 
 Local (recommended):
 ```bash
 MONGO_URI="<your-mongo-uri>" node tool-system/seedAdmin.js
+# or using npm from repo root
+MONGO_URI="<your-mongo-uri>" npm --prefix tool-system run seed
 ```
 
 On Render (one-off):

@@ -1,0 +1,38 @@
+name: Deploy Verification
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait a moment for Netlify
+        run: sleep 15
+
+      - name: Verify static site is reachable
+        run: |
+          URL="https://timsbymangal.netlify.app"
+          STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
+          echo "Static site status: $STATUS"
+          if [ "$STATUS" -ne 200 ]; then echo "Static site check failed: $STATUS" && exit 1; fi
+
+      - name: Verify /api/health
+        run: |
+          URL="https://timsbymangal.netlify.app/api/health"
+          STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
+          echo "Health status: $STATUS"
+          if [ "$STATUS" -ne 200 ]; then echo "Health check failed: $STATUS" && exit 1; fi
+
+      - name: Verify /api/admin/tools
+        run: |
+          URL="https://timsbymangal.netlify.app/api/admin/tools"
+          STATUS=$(curl -o /dev/null -s -w "%{http_code}" "$URL")
+          echo "Tools API status: $STATUS"
+          # Allow 200 (OK), 204 (No Content), and 401 (if auth applies)
+          if [ "$STATUS" -ne 200 ] && [ "$STATUS" -ne 204 ] && [ "$STATUS" -ne 401 ]; then echo "Tools API check failed: $STATUS" && exit 1; fi
+
+      - name: Deploy verification success
+        run: echo "Deploy verification passed ✅"

@@ -1,11 +1,21 @@
 [build]
-  publish = "tool-system/public"
-  functions = "netlify/functions"
+  # This points to where your index.html is located
+  publish = "tool-system/public" 
   command = "echo 'No build required'"
 
+# --- PROXY REDIRECT TO RENDER ---
 [[redirects]]
   from = "/api/*"
-  to = "/.netlify/functions/server/:splat"
+  # Replace the URL below with your actual Render URL
+  to = "https://tools-issue-management-system.onrender.com/api/:splat"
+  status = 200
+  force = true
+
+# --- SINGLE PAGE APP (SPA) FIX ---
+# This ensures that refreshing the page doesn't give a 404 error
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
 
 [context.production.environment]
