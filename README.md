@@ -62,12 +62,21 @@ MONGO_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/tool_management
 
 
 4. **Seed the Initial Admin**:
-Because the system starts with an empty database, run the seed script to create your first Admin account:
-```bash
-node seedAdmin.js
+Because the system starts with an empty database, run the seed script to create your first Admin account.
 
+Local (recommended):
+```bash
+MONGO_URI="<your-mongo-uri>" node tool-system/seedAdmin.js
 ```
 
+On Render (one-off):
+- Ensure `MONGO_URI` is set in the Render service Environment Settings.
+- In the Render dashboard open your service, click **Shell**, then run:
+```bash
+node seedAdmin.js
+```
+
+This will create the default Admin (email: `admin@system.com`, password: `Admin@123`).
 
 5. **Run the Server**:
 ```bash
@@ -128,6 +137,17 @@ curl https://<YOUR_SITE>.netlify.app/api/admin/tools
 ```
 
 If any command returns a 5xx or a connection error, check **Site → Functions → server → Logs** in the Netlify UI for error details.
+
+---
+
+## 🔁 Automatic deploy verification (GitHub Action)
+A GitHub Action `Deploy Verification` has been added at `.github/workflows/deploy-verification.yml`.
+- It runs on `push` to `main` and manually via `workflow_dispatch`.
+- It performs the same three checks (static site, `/api/health`, `/api/admin/tools`) against `https://timsbymangal.netlify.app` and fails if any check returns an unexpected status code.
+
+If you prefer to point the workflow at a different Netlify site name, edit the URLs in `.github/workflows/deploy-verification.yml`.
+
+---
 
 ---
 **Developed by Mangal**
