@@ -85,6 +85,32 @@ The system will be live at `http://localhost:5000`.
 * **Password**: `Admin@123`
 
 ---
+## 📦 Deployment (Netlify) ✅
 
+This repository includes a `netlify.toml` that publishes the static frontend from `tool-system/public`. No build step is required because the frontend is a static site using CDN assets.
+
+**Netlify (UI)**
+1. Go to https://app.netlify.com, sign in and click **Add new site → Import an existing project**.
+2. Connect to GitHub and select repository `mangal3108/Tools-Issue-Management-System`, branch `main`.
+3. Before deploying, add the required environment variable (Site settings → Build & deploy → Environment):
+   - `MONGO_URI` — your MongoDB connection string (e.g. `mongodb+srv://<user>:<pw>@cluster...`)
+4. Confirm:
+   - **Build command:** leave blank or use `echo 'No build required'`
+   - **Publish directory:** `tool-system/public`
+5. Click **Deploy** and open your site when complete.
+
+**Netlify CLI**
+- Install: `npm install -g netlify-cli`
+- Login: `netlify login`
+- Deploy (production): `netlify deploy --prod --dir=tool-system/public`
+
+**Note on API routing**
+- The repo includes a Netlify Function at `netlify/functions/server.js` that wraps the Express API and a redirect so frontend calls to `/api/*` are proxied to the function.
+- Ensure `MONGO_URI` is set on Netlify (Site settings → Build & deploy → Environment) so the API can connect to your database.
+
+**Badge (placeholder)**
+[![Netlify Status](https://api.netlify.com/api/v1/badges/<YOUR_BADGE_ID>/deploy-status)](https://app.netlify.com/sites/<YOUR_SITE>/deploys)
+
+---
 **Developed by Mangal**
 

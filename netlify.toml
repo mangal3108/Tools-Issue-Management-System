@@ -1,0 +1,12 @@
+[build]
+  publish = "tool-system/public"
+  functions = "netlify/functions"
+  command = "echo 'No build required'"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/server/:splat"
+  status = 200
+
+[context.production.environment]
+  NODE_ENV = "production"

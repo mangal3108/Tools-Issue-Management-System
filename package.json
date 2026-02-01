@@ -1,0 +1,20 @@
+{
+  "name": "tools-issue-management-netlify",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "netlify dev",
+    "build": "echo \"No build required\"",
+    "serve": "netlify dev"
+  },
+  "dependencies": {
+    "serverless-http": "^4.0.0",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.5",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "bcryptjs": "^3.0.3",
+    "jsonwebtoken": "^9.0.3",
+    "multer": "^2.0.2"
+  }
+}
