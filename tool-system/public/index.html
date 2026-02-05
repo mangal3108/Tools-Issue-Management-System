@@ -43,7 +43,7 @@
         <div v-if="view === 'admin'" class="row g-4">
             <div class="col-lg-4">
                 <div class="glass-card">
-                    <h5>Sync Personnel</h5>
+                    <h5>Add Mechanic</h5>
                     <input v-model="mech.name" class="form-control mb-2" placeholder="Full Name">
                     <input v-model="mech.email" class="form-control mb-2" placeholder="Email">
                     <input v-model="mech.mobile" maxlength="10" class="form-control mb-2" placeholder="Mobile">
@@ -106,7 +106,7 @@
 
         <div v-if="view === 'mechanic'" class="row g-4">
             <div class="col-md-6 glass-card">
-                <h5>Inventory Matrix</h5>
+                <h5>Inventory</h5>
                 <div v-for="t in tools" class="d-flex justify-content-between border-bottom border-secondary py-2 align-items-center">
                     <div>
                         <img :src="t.image || 'https://via.placeholder.com/40'" class="inventory-img me-2">
@@ -116,7 +116,7 @@
                 </div>
             </div>
             <div class="col-md-6 glass-card" style="border-left: 4px solid var(--neon-blue);">
-                <h5 class="text-info">Your Active Custody</h5>
+                <h5 class="text-info">Your Active Inventory</h5>
                 <div v-for="i in sessionIssued" :key="i._id" class="bg-dark p-3 rounded mb-2">
                     <div class="d-flex justify-content-between align-items-start">
                         <div>
